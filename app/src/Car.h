@@ -15,7 +15,14 @@ class Car{
         int price;
 
     public:
+        //default constructor
+        Car();
+
+        //used constructor
         Car(string carName, string carModel, int carFabricationYear, string carColor, int carPrice);
+
+        //copy constructor
+        Car(const Car &car);
 
         //geters
         string getName() const;

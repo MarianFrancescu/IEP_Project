@@ -2,14 +2,30 @@
 
 using namespace std;
 
+//default constructor
+Car::Car()
+        :   name(""),
+            model(""),
+            fabricationYear(0),
+            color(""),
+            price(0){}
+
+//used constructor
 Car::Car(string carName, string carModel, int carFabricationYear, string carColor, int carPrice)
         :   name(carName),
             model(carModel),
             fabricationYear(carFabricationYear),
             color(carColor),
             price(carPrice){}
-    
 
+//copy constructor
+Car::Car(const Car &car)
+        :   name(car.name),
+            model(car.model),
+            fabricationYear(car.fabricationYear),
+            color(car.color),
+            price(car.price){}
+    
 //geters
     string Car::getName() const{
         return name;

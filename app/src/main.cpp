@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Car.h"
+#include <string>
 // #include <string>
 using namespace std;
 
@@ -45,7 +46,38 @@ using namespace std;
 //     }
 
 int main() {
+    int option;
     Car car1("tesla", "s",1999,"black",1000);
-    cout<<car1;
+    cout << car1;
+
+    do{
+        cout << "0. Exit\n";
+        cout << "1. View all cars\n";
+        cout << "2. Search for a brand\n";
+        cout << "3. Search car after color\n";
+
+        cin >> option;
+
+        switch(option){
+            case 0:
+                cout << "Exiting...\n";
+                return 0;
+            case 1:
+                cout << "View cars\n";
+                break;
+            case 2: {
+                string name;
+                cout << "Brand: ";
+                cin >> name;
+                break;
+                }
+            case 3: 
+                string color;
+                cout << "Car's color: ";
+                cin >> color;
+                break;
+        }
+
+    }while(option != 0);
     return 0;
 }

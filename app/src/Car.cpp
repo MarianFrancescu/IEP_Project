@@ -2,13 +2,13 @@
 
 using namespace std;
 
-Car::Car(string carName, string carModel, int carFabricationYear, string carColor, int carPrice){
-        name = carName;
-        model = carModel;
-        fabricationYear = carFabricationYear;
-        color = carColor;
-        price = carPrice;
-    }
+Car::Car(string carName, string carModel, int carFabricationYear, string carColor, int carPrice)
+        :   name(carName),
+            model(carModel),
+            fabricationYear(carFabricationYear),
+            color(carColor),
+            price(carPrice){}
+    
 
 //geters
     string Car::getName() const{

@@ -24,12 +24,19 @@ class Car{
         //copy constructor
         Car(const Car &car);
 
+        //destructor
+        ~Car();
+
         //geters
         string getName() const;
         string getModel() const;
         string getColor() const;
         int getFabricationYear() const;
         int getPrice() const;
+
+    private: 
+        //copy assignment operator
+        Car& operator=(const Car& car);
 
 };
 

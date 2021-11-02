@@ -2,58 +2,22 @@
 #include "Car.h"
 #include <string>
 #include <vector>
-// #include <string>
 using namespace std;
-
-// class Car{
-//     private:
-//         string name;
-//         string model;
-//         int fabricationYear;
-//         string color;
-//         int price;
-
-//     public:
-//         Car(string carName, string carModel, int carFabricationYear, string carColor, int carPrice){
-//             name = carName;
-//             model = carModel;
-//             fabricationYear = carFabricationYear;
-//             color = carColor;
-//             price = carPrice;
-//         }
-
-//         //geters
-//         string getName() const{
-//             return name;
-//         }
-//         string getModel() const{
-//             return model;
-//         }
-//         string getColor() const{
-//             return color;
-//         }
-//         int getFabricationYear() const{
-//             return fabricationYear;
-//         }
-//         int getPrice() const{
-//             return price;
-//         }
-
-// };
-
-// ostream& operator<<(ostream& ostr, const Car& car) {
-//         ostr << car.getName() << " model: " << car.getModel()<<endl;
-//         return ostr;
-//     }
 
 int main() {
     int option;
     int i = 0;
     vector<Car> cars;
-    Car car1{"tesla", "s",1999,"black",1000};
-    //use of copy constructor
-    Car car2(car1);
-    cout << car2;
+    Car emblematicCar{"Honda", "Civic", 2020, "black", 100000};
+    Car emblematicCar1{"Honda", "Accord", 2004, "green", 1000};
+
+    // //use of copy constructor
+    // Car emblematicCar2(emblematicCar1);
+    // cout << emblematicCar2;
+
+    // //use of copy assignment operator
+    // emblematicCar2.operator=(emblematicCar);
+    // cout<<emblematicCar2;
 
     do{
         cout << "0. Exit\n";
@@ -86,13 +50,14 @@ int main() {
                 }
                 break;
                 }
-            case 3: 
-                {string color;
+            case 3: {
+                string color;
                 cout << "Car's color: ";
                 cin >> color;
-                break;}
-            case 4: 
-                {string brand, model, color;
+                break;
+                }
+            case 4: {
+                string brand, model, color;
                 int fabrYear, price;
                 cout << "Car's brand: ";
                 cin >> brand;
@@ -105,7 +70,8 @@ int main() {
                 cout << "Car's price: ";
                 cin >> price;
                 cars.push_back(Car(brand, model, fabrYear, color, price));
-                break;}
+                break;
+                }
         }
 
     }while(option != 0);

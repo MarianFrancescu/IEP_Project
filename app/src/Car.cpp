@@ -25,6 +25,20 @@ Car::Car(const Car &car)
             fabricationYear(car.fabricationYear),
             color(car.color),
             price(car.price){}
+
+// //copy assignment operator
+// Car& Car::operator=(const Car& car){
+//     name = car.name;
+//     model = car.model;
+//     fabricationYear = car.fabricationYear;
+//     color = car.color;
+//     price = car.price;
+//     return *this;
+// }
+
+Car::~Car(){
+    cout<<"destroyed car\n";
+}
     
 //geters
     string Car::getName() const{
@@ -44,6 +58,8 @@ Car::Car(const Car &car)
     }
 
 ostream& operator<<(ostream& ostr, const Car& car) {
-    ostr << car.getName() << " model: " << car.getModel()<<endl;
+    ostr << "Brand: " << car.getName() << " model: " << car.getModel() 
+        << " fabrication year: " << car.getFabricationYear() << " color: " << car.getColor()
+        << " price: " << car.getPrice() << endl;
     return ostr;
 }

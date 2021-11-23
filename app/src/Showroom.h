@@ -34,7 +34,7 @@ class Showroom{
         string getName() const;
         string getLocation() const;
         vector<Car> getCars() const;
-        
+        void addCar(Car& car);        
 };
 
 ostream& operator<<(ostream& ostr, const Showroom& Showroom);

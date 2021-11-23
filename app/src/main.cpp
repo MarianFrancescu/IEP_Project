@@ -8,25 +8,25 @@ using namespace std;
 int main()
 {
     int option;
-    int i = 0;
-    vector<Car> cars{};
     Car emblematicCar{"Honda", "Civic", 2020, "black", 100000};
     Car emblematicCar1{"Honda", "Accord", 2004, "green", 1000};
 
-    Showroom s1{"abc", "berlin", {}};
-    cout<<s1;
-    // //use of copy constructor
-    // Car emblematicCar2(emblematicCar1);
-    // cout << emblematicCar2;
+    Showroom showroom1{"Autobenz", "Stuttgart", {}};
 
-    // //use of copy assignment operator
-    // emblematicCar2.operator=(emblematicCar);
-    // cout<<emblematicCar2;
+    //example use for faster demo
+    showroom1.addCar(emblematicCar);
+    showroom1.addCar(emblematicCar1);
+
+    Showroom copyShowroom1 = showroom1;
+    cout<<copyShowroom1;
+
+
+    Showroom showroom2{"Bavaria Group", "Munich", {}};
 
     do
     {
         cout << "0. Exit\n";
-        cout << "1. View all cars\n";
+        cout << "1. View all cars from showroom\n";
         cout << "2. Search for a brand\n";
         cout << "3. Search car after color\n";
         cout << "4. Add a car\n";
@@ -36,42 +36,44 @@ int main()
         switch (option)
         {
         case 0:
-            {Showroom s2{"a", "b", cars};
-            cout<<s2;
             cout << "Exiting...\n";
-            return 0;}
+            return 0;
+
         case 1:
-            cout << "View cars\n";
-            //initialized a reference from temporary
-            for (Car car : cars)
-            {
-                cout << car;
-            }
+        {
+            cout << "View  all cars from the showroom\n";
+
+            Showroom showroom3 = showroom2;
+            cout<<showroom3;
             break;
+        }
+
         case 2:
         {
             string name;
             cout << "Brand: ";
             cin >> name;
-            for (Car car : cars)
+            for (Car car : showroom2.getCars())
             {
                 if (car.getName() == name)
                     cout << car;
             }
             break;
         }
+
         case 3:
         {
             string color;
             cout << "Car's color: ";
             cin >> color;
-            for (Car car : cars)
+            for (Car car : showroom2.getCars())
             {
                 if (car.getColor() == color)
                     cout << car;
             }
             break;
         }
+
         case 4:
         {
             string brand, model, color;
@@ -86,7 +88,10 @@ int main()
             cin >> fabrYear;
             cout << "Car's price: ";
             cin >> price;
-            cars.push_back(Car(brand, model, fabrYear, color, price));
+
+            //add cars in the specified showroom
+            Car exampleCar{brand,model,fabrYear,color,price};
+            showroom2.addCar(exampleCar);
             break;
         }
 

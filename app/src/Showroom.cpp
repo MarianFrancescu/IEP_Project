@@ -48,10 +48,16 @@ Showroom::~Showroom(){
         return cars;
     }
 
+    void Showroom::addCar(Car& car)
+    {
+        cars.push_back(car);
+    }
+
 ostream& operator<<(ostream& ostr, const Showroom& showroom) {
-    ostr << "Showroom name: " << showroom.getName() << " & location: " << showroom.getLocation()<<endl;
-    cout << "Cars:\n";
+    ostr << "Showroom name: " << "\033[1;35m" << showroom.getName() << "\033[0;37m" << " & location: " 
+        << "\033[1;36m" << showroom.getLocation() << "\033[0;37m" <<endl;
+    cout << "- Cars:\n";
     for(Car car: showroom.getCars())
-        cout << car;
+        cout << " > "<<car;
     return ostr;
 }

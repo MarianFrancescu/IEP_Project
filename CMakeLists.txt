@@ -7,4 +7,6 @@ add_executable(IEP_Project
                 app/src/main.cpp
                 app/src/Car.cpp
                 app/src/Car.h
+                app/src/Showroom.cpp
+                app/src/Showroom.h
                 )

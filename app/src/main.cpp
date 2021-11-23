@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Car.h"
+#include "Showroom.h"
 #include <string>
 #include <vector>
 using namespace std;
@@ -12,6 +13,8 @@ int main()
     Car emblematicCar{"Honda", "Civic", 2020, "black", 100000};
     Car emblematicCar1{"Honda", "Accord", 2004, "green", 1000};
 
+    Showroom s1{"abc", "berlin", {}};
+    cout<<s1;
     // //use of copy constructor
     // Car emblematicCar2(emblematicCar1);
     // cout << emblematicCar2;
@@ -33,8 +36,10 @@ int main()
         switch (option)
         {
         case 0:
+            {Showroom s2{"a", "b", cars};
+            cout<<s2;
             cout << "Exiting...\n";
-            return 0;
+            return 0;}
         case 1:
             cout << "View cars\n";
             //initialized a reference from temporary

@@ -34,7 +34,6 @@ class Car{
         int getFabricationYear() const;
         int getPrice() const;
 
-    private: 
         //copy assignment operator
         Car& operator=(const Car& car);
 

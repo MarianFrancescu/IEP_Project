@@ -27,14 +27,14 @@ Car::Car(const Car &car)
             price(car.price){}
 
 // //copy assignment operator
-// Car& Car::operator=(const Car& car){
-//     name = car.name;
-//     model = car.model;
-//     fabricationYear = car.fabricationYear;
-//     color = car.color;
-//     price = car.price;
-//     return *this;
-// }
+Car& Car::operator=(const Car& car){
+    name = car.name;
+    model = car.model;
+    fabricationYear = car.fabricationYear;
+    color = car.color;
+    price = car.price;
+    return *this;
+}
 
 Car::~Car(){
     cout<<"destroyed car\n";

@@ -3,10 +3,11 @@ project(IEP_Project VERSION 1.0.0)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+include_directories(app headers src)
 add_executable(IEP_Project 
-                app/src/main.cpp
+                app/headers/Car.h
+                app/headers/Showroom.h
                 app/src/Car.cpp
-                app/src/Car.h
                 app/src/Showroom.cpp
-                app/src/Showroom.h
+                app/src/main.cpp
                 )

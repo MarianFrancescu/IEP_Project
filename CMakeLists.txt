@@ -7,7 +7,9 @@ include_directories(app headers src)
 add_executable(IEP_Project 
                 app/headers/Car.h
                 app/headers/Showroom.h
+                app/headers/Manager.h
                 app/src/Car.cpp
                 app/src/Showroom.cpp
+                app/src/Manager.cpp
                 app/src/main.cpp
                 )

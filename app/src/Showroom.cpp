@@ -53,6 +53,14 @@ Showroom::~Showroom(){
         cars.push_back(car);
     }
 
+    int Showroom::totalOfCars(){
+        int counter = 0;
+        for(Car car : cars){
+            counter++;
+        }
+        return counter;
+    }
+
 ostream& operator<<(ostream& ostr, const Showroom& showroom) {
     ostr << "Showroom name: " << "\033[1;35m" << showroom.getName() << "\033[0;37m" << " & location: " 
         << "\033[1;36m" << showroom.getLocation() << "\033[0;37m" <<endl;

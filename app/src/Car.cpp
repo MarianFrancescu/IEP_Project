@@ -37,7 +37,7 @@ Car& Car::operator=(const Car& car){
 }
 
 Car::~Car(){
-    cout<<"destroyed car\n";
+    // cout<<"destroyed car\n";
 }
     
 //geters

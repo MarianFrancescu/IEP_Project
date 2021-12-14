@@ -11,7 +11,7 @@ using namespace std;
 class Manager{
     private:
         string name;
-        Showroom showroom;
+        std::unique_ptr<Showroom> showroom;
 
     public:
         //default constructor

@@ -12,16 +12,13 @@ int main()
     int option;
     Car emblematicCar{"Honda", "Civic", 2020, "black", 100000};
     Car emblematicCar1{"Honda", "Accord", 2004, "green", 1000};
+    Car emblematicCar2{"Mercedes", "W126", 1986, "black", 15000};
 
     Showroom showroom1{"Autobenz", "Stuttgart", {}};
 
     //example use for faster demo
     showroom1.addCar(emblematicCar);
     showroom1.addCar(emblematicCar1);
-
-    Showroom copyShowroom1 = showroom1;
-
-    cout<<"Number of cars: "<< showroom1.totalOfCars()<<endl;
 
     //shared pointer - same car is shared between 2 showrooms
     Showroom exampleShowroom{"Benetton", "UK", {}};
@@ -30,24 +27,26 @@ int main()
 
     Showroom exampleShowroom2{"Daimler", "Linz", {}};
     shared_ptr<Car> car2 = car1;
+    
     exampleShowroom2.addCar(*car2);
 
-    cout<<"Number of shared cars: "<< exampleShowroom2.totalOfCars()<<endl;
-
+    cout<<"Number of owners of shared car: "<< car2.use_count()<<endl;
 
     Showroom showroom2{"Bavaria Group", "Munich", {}};
-
+    showroom2.addCar(emblematicCar2);
+    
     //use of unique pointer - we can move the manager, but not copy 
     unique_ptr<Manager> M1(new Manager("Lewis"));
+    M1->setShowroom(showroom1);
     cout<<*M1;
 
-    unique_ptr<Manager> M2 = std::move(M1);
+    unique_ptr<Manager> M2(new Manager("Phill"));
     M2->setShowroom(showroom2);
+    cout<<*M2;
 
-    unique_ptr<Manager> M3 = std::move(M2);
-    M3->setShowroom(showroom1);
-    cout<<*M3;
-    // cout<<M1->getShowroomName()<<endl;
+    // illegal operation
+    // unique_ptr<Manager> M3 = M1;
+    // cout<<*M3;
 
 
     // do

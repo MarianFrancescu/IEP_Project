@@ -5,8 +5,7 @@ using namespace std;
 
 //default constructor
 Manager::Manager()
-        :   name(""),
-            showroom({}){}
+        :   name(""){}
 
 //used constructor
 Manager::Manager(string managerName)
@@ -20,7 +19,7 @@ Manager::~Manager(){}
     
 //seters
     void Manager::setShowroom(Showroom managerShowroom) {
-        this->showroom = managerShowroom;
+        this->showroom = make_unique<Showroom>(managerShowroom);
     }
 
 //getters
@@ -29,11 +28,11 @@ Manager::~Manager(){}
     }
 
     string Manager::getShowroomName() const{
-        return showroom.getName();
+        return showroom->getName();
     }
 
     Showroom Manager::getShowroom() const{
-        return showroom;
+        return *showroom;
     }
 
 ostream& operator<<(ostream& ostr, const Manager& manager) {

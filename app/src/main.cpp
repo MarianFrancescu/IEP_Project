@@ -2,9 +2,11 @@
 #include "../headers/Car.h"
 #include "../headers/Showroom.h"
 #include "../headers/Manager.h"
+#include "../headers/Lock.h"
 #include <string>
 #include <vector>
 #include <memory>
+#include <thread>
 using namespace std;
 
 int main()
@@ -15,6 +17,7 @@ int main()
     Car emblematicCar2{"Mercedes", "W126", 1986, "black", 15000};
 
     Showroom showroom1{"Autobenz", "Stuttgart", {}};
+    Showroom showroom11{"VW Group", "Wolfsburg", {}};
 
     //example use for faster demo
     showroom1.addCar(emblematicCar);
@@ -33,6 +36,7 @@ int main()
     cout<<"Number of owners of shared car: "<< car2.use_count()<<endl;
 
     Showroom showroom2{"Bavaria Group", "Munich", {}};
+    
     showroom2.addCar(emblematicCar2);
     
     //use of unique pointer - we can move the manager, but not copy 
@@ -47,84 +51,14 @@ int main()
     // illegal operation
     // unique_ptr<Manager> M3 = M1;
     // cout<<*M3;
+    
+    std::thread contor1(&Showroom::addCar, &showroom11, std::ref(emblematicCar1));
+    std::thread contor2(&Showroom::addCar, &showroom11, std::ref(emblematicCar2));
 
+    contor1.join();
+    contor2.join();
 
-    // do
-    // {
-    //     cout << "0. Exit\n";
-    //     cout << "1. View all cars from showroom\n";
-    //     cout << "2. Search for a brand\n";
-    //     cout << "3. Search car after color\n";
-    //     cout << "4. Add a car\n";
-
-    //     cin >> option;
-
-    //     switch (option)
-    //     {
-    //     case 0:
-    //         cout << "Exiting...\n";
-    //         return 0;
-
-    //     case 1:
-    //     {
-    //         cout << "View  all cars from the showroom\n";
-
-    //         Showroom showroom3 = showroom2;
-    //         cout<<showroom3;
-    //         break;
-    //     }
-
-    //     case 2:
-    //     {
-    //         string name;
-    //         cout << "Brand: ";
-    //         cin >> name;
-    //         for (Car car : showroom2.getCars())
-    //         {
-    //             if (car.getName() == name)
-    //                 cout << car;
-    //         }
-    //         break;
-    //     }
-
-    //     case 3:
-    //     {
-    //         string color;
-    //         cout << "Car's color: ";
-    //         cin >> color;
-    //         for (Car car : showroom2.getCars())
-    //         {
-    //             if (car.getColor() == color)
-    //                 cout << car;
-    //         }
-    //         break;
-    //     }
-
-    //     case 4:
-    //     {
-    //         string brand, model, color;
-    //         int fabrYear, price;
-    //         cout << "Car's brand: ";
-    //         cin >> brand;
-    //         cout << "Car's model: ";
-    //         cin >> model;
-    //         cout << "Car's color: ";
-    //         cin >> color;
-    //         cout << "Car's fabrication year: ";
-    //         cin >> fabrYear;
-    //         cout << "Car's price: ";
-    //         cin >> price;
-
-    //         //add cars in the specified showroom
-    //         Car exampleCar{brand,model,fabrYear,color,price};
-    //         showroom2.addCar(exampleCar);
-    //         break;
-    //     }
-
-    //     default:
-    //         cout << "Option not available!\n";
-    //     }
-
-    // } while (option != 0);
+    cout<<"\tNo of cars in the "<<
+        showroom11.getName()<<" showroom is: "<<showroom11.totalOfCars()<<endl;
     return 0;
 }

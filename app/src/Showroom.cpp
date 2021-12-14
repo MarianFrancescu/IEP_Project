@@ -6,7 +6,8 @@ using namespace std;
 Showroom::Showroom()
         :   name(""),
             location(""),
-            cars({}){}
+            cars({}),
+            counter(0){}
 
 //used constructor
 Showroom::Showroom(string showroomName, string showroomLocation, vector<Car> showroomCars)
@@ -51,13 +52,20 @@ Showroom::~Showroom(){
     void Showroom::addCar(Car& car)
     {
         cars.push_back(car);
+        lock.lock();
+        counter++;
+        lock.unlock();
+    }
+
+    void Showroom::deleteCar(){
+        cars.pop_back();
+        lock.lock();
+        counter--;
+        lock.unlock();
     }
 
     int Showroom::totalOfCars(){
-        int counter = 0;
-        for(Car car : cars){
-            counter++;
-        }
+        
         return counter;
     }
 

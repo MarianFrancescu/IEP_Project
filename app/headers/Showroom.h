@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include "Car.h"
+#include "Lock.h"
 
 using namespace std;
 
@@ -12,7 +13,9 @@ class Showroom{
     private:
         string name;
         string location;
-        vector<Car> cars;        
+        vector<Car> cars; 
+        int counter;   
+        Lock lock;    
 
     public:
         //default constructor
@@ -35,6 +38,7 @@ class Showroom{
         string getLocation() const;
         vector<Car> getCars() const;
         void addCar(Car& car); 
+        void deleteCar();
         int totalOfCars();       
 };
 

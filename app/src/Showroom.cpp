@@ -65,7 +65,6 @@ Showroom::~Showroom(){
     }
 
     int Showroom::totalOfCars(){
-        
         return counter;
     }
 

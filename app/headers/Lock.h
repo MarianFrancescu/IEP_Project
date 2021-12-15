@@ -11,7 +11,6 @@ class Lock{
 
     public:
         explicit Lock();
-        Lock(const Lock&) = delete;
         ~Lock();
         void lock();
         void unlock();

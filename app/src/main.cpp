@@ -45,8 +45,14 @@ int main()
     cout<<*M1;
 
     unique_ptr<Manager> M2(new Manager("Phill"));
-    M2->setShowroom(showroom2);
+    M2->setShowroom(showroom1);
     cout<<*M2;
+
+    // //legal operation to move M2 in M3 -> M2 will be destroyed
+    // unique_ptr<Manager> M3 = std::move(M2);
+    // cout<<*M3;
+    // //this will broke the program because M2 is destroyed
+    // cout<<*M2;
 
     // illegal operation
     // unique_ptr<Manager> M3 = M1;
@@ -57,7 +63,7 @@ int main()
 
     contor1.join();
     contor2.join();
-
+    // showroom11.addCar(emblematicCar);
     cout<<"\tNo of cars in the "<<
         showroom11.getName()<<" showroom is: "<<showroom11.totalOfCars()<<endl;
     return 0;
